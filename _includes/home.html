@@ -1,0 +1,31 @@
+<div class="content-home text-center">
+	<a class="avatar" href="/">
+		<img src="/images/avatar.jpg" alt="" />
+	</a>
+	<h1 class="name">
+		{{ site.title }}
+	</h1>
+	<div class="slogan">
+		{{ site.slogan }}
+	</div>
+	<hr>
+
+	<ul class="text-center nav">
+
+		{% for item in site.home_nav %}
+        	<li class="item">
+        		{% if item.target == '_blank' %}
+        			<a href="{{ item.url }}" target="_blank">{{ item.name }}</a>{% unless forloop.last %}
+        				<span>|</span>
+        			{% endunless %}
+        		{% else %}
+        			<a href="{{ item.url }}">{{ item.name }}</a>
+        			{% unless forloop.last %}
+        				<span>|</span>
+        			{% endunless %}
+        		{% endif %}
+        	</li>
+    	{% endfor %}
+	</ul>
+
+</div>

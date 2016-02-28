@@ -1,0 +1,9 @@
+---
+layout: default
+---
+
+{% if site.landing_page == 'splash' %}
+    {% include home.html %}
+{% else %}
+    {% include archive.html %}
+{% endif %}

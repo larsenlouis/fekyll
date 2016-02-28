@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	{% assign title = page.title %}
+
+	{% if page.path == 'archives' %}
+		{% assign title = 'Archives' %}
+	{% endif %}
+
+	{% if page.path == 'category' %}
+  		{% assign title = 'Category' %}
+	{% endif %}
+
+	{% if page.path == 'tag' %}
+		{% assign title = 'tag' %}
+	{% endif %}
+
+	{% if page.path == 'link' %}
+		{% assign title = 'link' %}
+	{% endif %}
+
+	{% if page.path == 'about' %}
+		{% assign title = 'about' %}
+	{% endif %}
+
+	<title>
+	{% if title %}{{ title }} | {% endif %} {{ site.title }}
+	</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	{% assign taglength = {{ page.tags | size }} %}
+	{% if page.tags && taglength > 0  %}
+		<meta name="keywords" content="{{ page.tags | array_to_sentence_string | replace:'\, and','\, and\, ' }}"
+	{% else %}
+		<meta name="keywords" content="{{ site.keywords }}" />
+	{% endif %}
+
+	<!-- open_graph shit -->
+
+	<link rel="alternate" href="{{ "/atom.xml" | prepend: site.baseurl }}" title="{{ site.title }}" type="application/atom+xml">
+
+	{% if site.favicon %}
+		<link rel="icon" href="{{ site.favicon | prepend: site.baseurl }}">
+	{% endif %}
+
+	<link rel="stylesheet" type="text/css" href="{{ "/css/main.css" | prepend: site.baseurl }}">
+
+	{% include google-analytics.html %}
+	{% include baidu-analytics.html %}
+</head>

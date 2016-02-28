@@ -1,0 +1,24 @@
+{% if paginator.total_pages > 1 %}
+<div class="pagination">
+    <nav class="page-nav">
+		<!-- < -->
+		{% if paginator.previous_page %}
+		<a class="extend prev" rel="prev" href=" {{ paginator.previous_page_path }} "> <i class="icon-angle-left"></i></a>
+		{% endif %}
+
+		<!-- page number list -->
+		{% for pagenum in (1..paginator.total_pages) %}
+			{% if pagenum == 1 %}
+				<a class="page-number" href="/archives/">{{ pagenum }}</a>
+			{% else %}
+				<a class="page-number" href="/archives/page/{{ pagenum }}/">{{ pagenum }}</a>
+			{% endif %}
+		{% endfor %}
+
+		<!-- > -->
+		{% if paginator.next_page %}
+		<a class="extend prev" rel="prev" href=" {{ paginator.next_page_path }} "> <i class="icon-angle-right"></i></a>
+		{% endif %}
+    </nav>
+</div>
+{% endif %}

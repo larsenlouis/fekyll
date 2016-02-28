@@ -1,0 +1,10 @@
+<div class="toolbox">
+	<div class="toolbox-entry">盒子</div>
+	<ul class="list-toolbox">
+		{% for page_nav_item in site.page_nav %}
+				<li class="item-toolbox">
+					<a href="{{ page_nav_item.url }}">{{ page_nav_item.name }}</a>
+				</li>
+		{% endfor %}
+	</ul>
+</div>
